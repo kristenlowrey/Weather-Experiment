@@ -1,0 +1,117 @@
+button {
+  border: solid 1px #f79351;
+  background-color: #ffe6a7;
+  border-radius: 20px;
+  font-weight: 300;
+  color: rgb(110, 110, 110);
+  transition: 200ms ease-in-out;
+}
+button:hover {
+  background-color: #fff7e4;
+}
+h2 {
+  font-weight: 300;
+  font-size: 18px;
+}
+h3 {
+  font-weight: 300;
+  font-size: 16px;
+}
+.container {
+  max-width: 600px;
+  border: 2px solid #ace0f9;
+  /* background-color: rgb(211, 211, 255);*/
+  background: linear-gradient(to top, #fff7e4 0%, #ace0f9 100%);
+  border-radius: 30px;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.search-bar {
+  border: 1px solid #ace0f9;
+  border-radius: 20px;
+  padding-left: 10px;
+  font-weight: 300;
+  transition: 200ms ease-in-out;
+}
+.search-bar:hover {
+  background-color: #ebf9ff;
+}
+#city {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
+  padding-top: 10px;
+}
+#temp-summary {
+  text-align: right;
+  padding-top: 10px;
+}
+#temp-summary .active {
+  color: black;
+}
+#icon {
+  max-width: 50px;
+  position: relative;
+  top: -6px;
+}
+#current-temp {
+  font-size: 30px;
+}
+#fahrenheit,
+#celsius {
+  text-decoration: none;
+  color: rgb(110, 110, 110);
+  font-weight: 300;
+  cursor: default;
+  transition: 200ms ease-in-out;
+}
+#fahrenheit:hover,
+#celsius:hover {
+  color: rgba(110, 110, 110, 0.5);
+}
+#description {
+  text-align: right;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+#today-high-low {
+  font-weight: 300;
+  font-size: 15px;
+}
+#humidity,
+#wind-speed {
+  text-align: right;
+  font-weight: 300;
+}
+.text-center {
+  padding-bottom: 10px;
+  padding-top: 5px;
+}
+.day,
+.temp {
+  padding: 5px;
+}
+.day {
+  text-align: right;
+}
+.temp {
+  text-align: left;
+  font-weight: 300;
+}
+#tag {
+  text-align: center;
+  font-weight: 300;
+  font-size: 15px;
+  padding-top: 20px;
+  position: relative;
+  top: 15px;
+}
+#github-link {
+  font-weight: bold;
+  color: #f79351;
+  transition: 200ms ease-in-out;
+}
+#github-link:hover {
+  color: #ffe6a7;
+}

@@ -12,112 +12,8 @@
       integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
       crossorigin="anonymous"
     />
-    <style>
-      button {
-        border: solid 1px #f79351;
-        background-color: #f9c23c;
-        border-radius: 20px;
-        font-weight: 300;
-      }
-      h2 {
-        font-weight: 300;
-        font-size: 18px;
-      }
-      h3 {
-        font-weight: 300;
-        font-size: 16px;
-      }
-      .container {
-        max-width: 600px;
-        border: 2px solid #ace0f9;
-        /* background-color: rgb(211, 211, 255);*/
-        background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
-        border-radius: 30px;
-        padding: 20px;
-        margin: 0 auto;
-        margin-top: 20px;
-      }
-
-      .search-bar {
-        border: 1px solid #ace0f9;
-        border-radius: 20px;
-        padding-left: 10px;
-        font-weight: 300;
-      }
-      #city {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        font-weight: 400;
-        padding-top: 10px;
-      }
-      #temp-summary {
-        text-align: right;
-        padding-top: 10px;
-      }
-      #temp-summary .active {
-        color: black;
-      }
-      #icon {
-        max-width: 50px;
-        position: relative;
-        top: -6px;
-      }
-      #current-temp {
-        font-size: 30px;
-      }
-      #fahrenheit,
-      #celsius {
-        text-decoration: none;
-        color: rgb(110, 110, 110);
-        font-weight: 300;
-        cursor: default;
-        transition: 200ms ease-in-out;
-      }
-      #fahrenheit:hover,
-      #celsius:hover {
-        color: rgba(110, 110, 110, 0.5);
-      }
-      #description {
-        text-align: right;
-        font-weight: 300;
-        text-transform: capitalize;
-      }
-      #today-high-low {
-        font-weight: 300;
-        font-size: 15px;
-      }
-      #humidity,
-      #wind-speed {
-        text-align: right;
-        font-weight: 300;
-      }
-      .text-center {
-        padding-bottom: 10px;
-        padding-top: 5px;
-      }
-      .day,
-      .temp {
-        padding: 5px;
-      }
-      .day {
-        text-align: right;
-      }
-      .temp {
-        text-align: left;
-        font-weight: 300;
-      }
-      #tag {
-        text-align: center;
-        font-weight: 300;
-        font-size: 15px;
-        padding-top: 20px;
-        position: relative;
-        top: 15px;
-      }
-      #github-link {
-        font-weight: bold;
-        color: #f79351;
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
+    <style></style>
   </head>
   <body>
     <div class="container">
@@ -134,7 +30,7 @@
           </form>
         </div>
         <div class="col-2"><button class="search">SEARCH</button></div>
-        <div class="col-6"><h1 class="city" id="city">Paris</h1></div>
+        <div class="col-6"><h1 class="city" id="city">Houston</h1></div>
         <div class="col-6" id="temp-summary">
           <img
             src="http://openweathermap.org/img/wn/03d@2x.png"
@@ -148,7 +44,7 @@
         </div>
         <br />
         <div class="col-6">
-          <h2 id="country">FR</h2>
+          <h2 id="country">US</h2>
         </div>
         <div class="col-6" id="description">Clouds</div>
         <div class="col-6">
@@ -190,7 +86,7 @@
       </div>
       <p id="tag">
         <a
-          href="https://github.com/kristenlowrey/New-Repository"
+          href="https://github.com/kristenlowrey/Weather-Experiment"
           id="github-link"
           target="_blank"
           >Open-source code</a
@@ -198,114 +94,10 @@
         by Kristen Lowrey
       </p>
     </div>
-    <script src="weatherapp.js"></script>
+    <script src="app.js"></script>
     <!--      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"-->
-    <script>
-      function formatDate(date) {
-        let hours = date.getHours();
-        if (hours < 10) {
-          hours = `0${hours}`;
-        }
-        let minutes = date.getMinutes();
-        if (minutes < 10) {
-          minutes = `0${minutes}`;
-        }
-        let dayIndex = date.getDay();
-        let days = [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ];
-        let day = days[dayIndex];
-        return `Last update: ${day} ${hours}:${minutes}`;
-      }
-
-      let dateElement = document.querySelector("#date");
-      let currentTime = new Date();
-
-      dateElement.innerHTML = formatDate(currentTime);
-
-      function search(city) {
-        let apiKey = "c16135a5e580c33729cbd9b170c43741";
-        let units = "imperial";
-        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-
-        axios.get(apiUrl).then(showTemperature);
-      }
-
-      function handleSubmit(event) {
-        event.preventDefault();
-        let cityInput = document.querySelector("#search-input");
-        search(cityInput.value);
-      }
-
-      function showTemperature(response) {
-        fahrenheitTemperature = response.data.main.temp;
-
-        document.querySelector("#city").innerHTML = response.data.name;
-        let temperatureElement = document.querySelector("#current-temp");
-        temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-        let descriptionElement = document.querySelector("#description");
-        descriptionElement.innerHTML = response.data.weather[0].description;
-        let humidityElement = document.querySelector("#humidity");
-        humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`;
-        let windElement = document.querySelector("#wind-speed");
-        windElement.innerHTML = `Wind: ${Math.round(
-          response.data.wind.speed
-        )}mph`;
-        let highLowElement = document.querySelector("#today-high-low");
-        highLowElement.innerHTML = `${Math.round(
-          response.data.main.temp_max
-        )}° / ${Math.round(response.data.main.temp_min)}°`;
-        let countryElement = document.querySelector("#country");
-        countryElement.innerHTML = response.data.sys.country;
-
-        let iconElement = document.querySelector("#icon");
-        iconElement.setAttribute(
-          "src",
-          `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-        );
-        iconElement.setAttribute("alt", response.data.weather[0].description);
-        //"openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png"
-      }
-
-      function showCelsius(event) {
-        event.preventDefault();
-        let celsiusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
-        let temperatureElement = document.querySelector("#current-temp");
-        temperatureElement.innerHTML = Math.round(celsiusTemperature);
-        fahrenheitLink.classList.remove("active");
-        celsiusLink.classList.add("active");
-      }
-
-      function showFahrenheit(event) {
-        event.preventDefault();
-        let temperatureElement = document.querySelector("#current-temp");
-        temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-        celsiusLink.classList.remove("active");
-        fahrenheitLink.classList.add("active");
-      }
-
-      let fahrenheitTemperature = null;
-
-      let form = document.querySelector("#search-form");
-      form.addEventListener("submit", handleSubmit);
-
-      let celsiusLink = document.querySelector("#celsius");
-      celsiusLink.addEventListener("click", showCelsius);
-
-      let fahrenheitLink = document.querySelector("#fahrenheit");
-      fahrenheitLink.addEventListener("click", showFahrenheit);
-
-      search("Houston");
-
-      // different gradients for different weather conditions
-    </script>
+    <script></script>
   </body>
 </html>
