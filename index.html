@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Weather App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <style>
+      button {
+        border: solid 1px #f79351;
+        background-color: #f9c23c;
+        border-radius: 20px;
+        font-weight: 300;
+      }
+      h2 {
+        font-weight: 300;
+        font-size: 18px;
+      }
+      h3 {
+        font-weight: 300;
+        font-size: 16px;
+      }
+      .container {
+        max-width: 600px;
+        border: 2px solid #ace0f9;
+        /* background-color: rgb(211, 211, 255);*/
+        background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+        border-radius: 30px;
+        padding: 20px;
+        margin: 0 auto;
+        margin-top: 20px;
+      }
+
+      .search-bar {
+        border: 1px solid #ace0f9;
+        border-radius: 20px;
+        padding-left: 10px;
+        font-weight: 300;
+      }
+      #city {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 400;
+        padding-top: 10px;
+      }
+      #temp-summary {
+        text-align: right;
+        padding-top: 10px;
+      }
+      #icon {
+        max-width: 50px;
+        position: relative;
+        top: -5px;
+      }
+      /* #main-emoji {
+        font-size: 30px;
+      }*/
+      #current-temp {
+        font-size: 30px;
+      }
+      #fahrenheit,
+      #celsius {
+        text-decoration: none;
+        color: black;
+        font-weight: 300;
+      }
+      #description {
+        text-align: right;
+        font-weight: 300;
+        text-transform: capitalize;
+      }
+      #today-high-low {
+        font-weight: 300;
+        font-size: 15px;
+      }
+      #humidity,
+      #wind-speed {
+        text-align: right;
+        font-weight: 300;
+      }
+      .text-center {
+        padding-bottom: 10px;
+        padding-top: 5px;
+      }
+      .day,
+      .temp {
+        padding: 5px;
+      }
+      .day {
+        text-align: right;
+      }
+      .temp {
+        text-align: left;
+        font-weight: 300;
+      }
+      #tag {
+        text-align: center;
+        font-weight: 300;
+        font-size: 15px;
+        padding-top: 20px;
+        position: relative;
+        top: 15px;
+      }
+      #github-link {
+        font-weight: bold;
+        color: #f79351;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-10">
+          <form id="search-form">
+            <input
+              type="text"
+              placeholder="Search for a city..."
+              class="search-bar"
+              id="search-input"
+              autocomplete="off"
+            />
+          </form>
+        </div>
+        <div class="col-2"><button class="search">SEARCH</button></div>
+        <div class="col-6"><h1 class="city" id="city">Paris</h1></div>
+        <div class="col-6" id="temp-summary">
+          <img
+            src="http://openweathermap.org/img/wn/03d@2x.png"
+            alt="Clouds"
+            id="icon"
+          />
+          <!--<span id="main-emoji">☁️</span>-->
+          <span class="current-temp" id="current-temp">85</span>
+          <a href="#" id="fahrenheit"> °F</a>
+          <a href="#" id="celsius">°C</a>
+        </div>
+        <br />
+        <div class="col-6">
+          <h2 id="country">FR</h2>
+        </div>
+        <div class="col-6" id="description">Clouds</div>
+        <div class="col-6">
+          <h3 class="country" id="date">Tuesday 15:03</h3>
+        </div>
+        <div class="col-6" id="humidity">Humidity: 80%</div>
+        <div class="col-6" id="today-high-low">86° / 62°</div>
+        <div class="col-6" id="wind-speed">Wind: 2mph</div>
+        <br />
+        <div class="text-center">
+          <div class="row">
+            <div class="col day">Sunday</div>
+            <div class="col temp"><span class="emoji"> ⛅</span> 86° / 62°</div>
+            <br />
+          </div>
+          <div class="row">
+            <div class="col day">Monday</div>
+            <div class="col temp"><span class="emoji"> 🌤️</span> 86° / 63°</div>
+            <br />
+          </div>
+          <div class="row">
+            <div class="col day">Tuesday</div>
+            <div class="col temp"><span class="emoji"> ⛅</span> 82° / 63°</div>
+            <br />
+          </div>
+          <div class="row">
+            <div class="col day">Wednesday</div>
+            <div class="col temp">
+              <span class="emoji">⛅</span>
+              90° / 63°
+            </div>
+            <br />
+          </div>
+          <div class="row">
+            <div class="col day">Thursday</div>
+            <div class="col temp"><span class="emoji"> 🌤️</span> 92° / 67°</div>
+          </div>
+        </div>
+      </div>
+      <p id="tag">
+        <a
+          href="https://github.com/kristenlowrey/New-Repository"
+          id="github-link"
+          target="_blank"
+          >Open-source code</a
+        >
+        by Kristen Lowrey
+      </p>
+    </div>
+    <script src="weatherapp.js"></script>
+    <!--      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"-->
+    <script>
+      function formatDate(date) {
+        let hours = date.getHours();
+        if (hours < 10) {
+          hours = `0${hours}`;
+        }
+        let minutes = date.getMinutes();
+        if (minutes < 10) {
+          minutes = `0${minutes}`;
+        }
+        let dayIndex = date.getDay();
+        let days = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        let day = days[dayIndex];
+        return `${day} ${hours}:${minutes}`;
+      }
+
+      let dateElement = document.querySelector("#date");
+      let currentTime = new Date();
+
+      dateElement.innerHTML = formatDate(currentTime);
+
+      function search(event) {
+        event.preventDefault();
+        let cityInput = document.querySelector("#search-input");
+        searchCity(cityInput.value);
+      }
+
+      let searchForm = document.querySelector("#search-form");
+      searchForm.addEventListener("submit", search);
+
+      function searchCity(city) {
+        let apiKey = "c16135a5e580c33729cbd9b170c43741";
+        let units = "imperial";
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+
+        axios.get(apiUrl).then(showTemperature);
+      }
+
+      function showTemperature(response) {
+        document.querySelector("#city").innerHTML = response.data.name;
+
+        document.querySelector("#current-temp").innerHTML = Math.round(
+          response.data.main.temp
+        );
+        let descriptionElement = document.querySelector("#description");
+        descriptionElement.innerHTML = response.data.weather[0].description;
+        let humidityElement = document.querySelector("#humidity");
+        humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+        let windElement = document.querySelector("#wind-speed");
+        windElement.innerHTML = `Wind: ${Math.round(
+          response.data.wind.speed
+        )}mph`;
+        let highLowElement = document.querySelector("#today-high-low");
+        highLowElement.innerHTML = `${Math.round(
+          response.data.main.temp_max
+        )}° / ${Math.round(response.data.main.temp_min)}°`;
+        let countryElement = document.querySelector("#country");
+        countryElement.innerHTML = response.data.sys.country;
+
+        let iconElement = document.querySelector("#icon");
+        iconElement.setAttribute(
+          "src",
+          `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+        );
+        iconElement.setAttribute("alt", response.data.weather[0].description);
+
+        console.log(response.data);
+        //"openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png"
+      }
+
+      // different gradients for different weather conditions
+    </script>
+  </body>
+</html>
