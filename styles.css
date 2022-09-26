@@ -1,13 +1,16 @@
 button {
   border: solid 1px #f79351;
-  background-color: #ffe6a7;
+  background-color: #f8dada;
   border-radius: 20px;
   font-weight: 300;
   color: rgb(110, 110, 110);
   transition: 200ms ease-in-out;
+  display: block;
+  margin: 0 auto;
+  margin-right: 0;
 }
 button:hover {
-  background-color: #fff7e4;
+  background-color: #f79351;
 }
 h2 {
   font-weight: 300;
@@ -19,9 +22,9 @@ h3 {
 }
 .container {
   max-width: 600px;
-  border: 2px solid #ace0f9;
+  border: 2px solid white;
   /* background-color: rgb(211, 211, 255);*/
-  background: linear-gradient(to top, #fff7e4 0%, #ace0f9 100%);
+  background: linear-gradient(to top, #f8dada 0%, #ace0f9 100%);
   border-radius: 30px;
   padding: 20px;
   margin: 0 auto;
@@ -117,16 +120,17 @@ h3 {
 #tag {
   text-align: center;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 13px;
   padding-top: 20px;
   position: relative;
   top: 15px;
 }
 #github-link {
-  font-weight: bold;
-  color: #f79351;
+  font-weight: 400;
+  color: #ea5435;
   transition: 200ms ease-in-out;
+  font-size: 14px;
 }
 #github-link:hover {
-  color: #ffe6a7;
+  color: #f79351;
 }
