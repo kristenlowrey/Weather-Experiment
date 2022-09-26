@@ -35,6 +35,31 @@ function handleSubmit(event) {
   search(cityInput.value);
 }
 
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+        <div class="weather-forecast-date">${day}</div>
+        <img
+            src="http://openweathermap.org/img/wn/03d@2x.png"
+            alt=""
+            width="50"
+          />
+          <div class="weather-forecast-temp">
+            <span class="weather-forecast-temp-max">105° </span>
+            <span class="weather-forecast-temp-min"> -10°</span>
+          </div>
+        </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   fahrenheitTemperature = response.data.main.temp;
 
@@ -97,3 +122,4 @@ let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", showFahrenheit);
 
 search("Houston");
+showForecast();
