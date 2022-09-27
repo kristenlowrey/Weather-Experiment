@@ -58,9 +58,6 @@ h3 {
   padding-top: 10px;
   color: white;
 }
-#temp-summary .active {
-  color: white;
-}
 #icon {
   max-width: 50px;
   position: relative;
@@ -69,17 +66,12 @@ h3 {
 #current-temp {
   font-size: 30px;
 }
-#fahrenheit,
-#celsius {
+#fahrenheit {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 300;
   cursor: default;
   transition: 200ms ease-in-out;
-}
-#fahrenheit:hover,
-#celsius:hover {
-  color: rgba(255, 255, 255, 0.8);
 }
 #country {
   font-weight: 400;
